@@ -3,6 +3,8 @@ const app = express();
 const port = 8000;
 const mongoose = require('mongoose');
 
+app.use(express.json());
+
 mongoose.connect('mongodb://localhost:27019/', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(error => console.error('Error connecting to MongoDB:', error));
