@@ -25,6 +25,16 @@ app.get('/api/v1/products', (req, res) => {
     .catch(error => res.status(500).json({ error }));
 });
 
+app.post('/api/v1/products', (req, res) => {
+  const product = new Product(req.body);
+  product.save()
+    .then(product => res.json({
+      status: 'success',
+      data: product
+    }))
+    .catch(error => res.status(500).json({ error }));
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
